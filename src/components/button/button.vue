@@ -1,7 +1,5 @@
 <template>
     <button class="z-button" :class="dynamicClass" @click="handleClick">
-        <!-- <g-icon class="loading icon" :class="iconDynamicClass" v-if="loading" name="loading" :icon-position="iconPosition"></g-icon>
-        <g-icon class="icon" :class="iconDynamicClass" v-if="icon && !loading" :name="icon" :icon-position="iconPosition"></g-icon> -->
         <div class="z-button-content">
             <slot></slot>
         </div>
