@@ -1,7 +1,10 @@
 <template>
-    <ZRadio label="1" v-model='radio'>备选项 </ZRadio>
-    <ZRadio label="2" v-model='radio'>备选项 </ZRadio>
-    {{radio}}
+  <ZRadioGroup v-model="radio">
+    <ZRadio label="1">备选项 </ZRadio>
+    <ZRadio label="2">备选项 </ZRadio>
+  </ZRadioGroup>
+
+  {{ radio }}
 </template>
 
 <script lang="ts">
@@ -13,6 +16,7 @@ import ZSwitch from './components/switch/index.vue'
 import ZRow from './components/row/index.vue'
 import ZCol from './components/col/index.vue'
 import ZRadio from './components/radio/radio.vue'
+import ZRadioGroup from './components/radio/radio-group.vue'
 
 export default defineComponent({
   name: 'App',
@@ -21,7 +25,9 @@ export default defineComponent({
     ZInput,
     ZSwitch,
     ZRow,
-    ZCol,ZRadio
+    ZCol,
+    ZRadio,
+    ZRadioGroup,
   },
   setup(props) {
     let radio = ref('')

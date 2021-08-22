@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, ref } from 'vue'
+import { computed, defineComponent, inject, nextTick, ref } from 'vue'
 const UPDATE_MODEL_EVENT = 'update:modelValue'
 export default defineComponent({
   name: 'z-radio',
@@ -20,13 +20,20 @@ export default defineComponent({
     },
   },
   setup(props, { emit }) {
+    const radioGroup: any = inject('ZRadioGroup')
+    const isGroup = computed(() => radioGroup?.name === 'ZRadioGroup')
+
     const radioRef = ref()
     const model = computed({
       get() {
-        return props.modelValue
+        return isGroup.value ? radioGroup.modelValue : props.modelValue
       },
       set(val) {
-        emit(UPDATE_MODEL_EVENT, val)
+        if (isGroup.value) {
+          radioGroup.changeEvent(val)
+        } else {
+          emit(UPDATE_MODEL_EVENT, val)
+        }
         radioRef.value.checked = props.modelValue === props.label
       },
     })
@@ -35,7 +42,7 @@ export default defineComponent({
         emit('change', model.value)
       })
     }
-    return {  model, radioRef, handleChange }
+    return { model, radioRef, handleChange, isGroup }
   },
 })
 </script>
