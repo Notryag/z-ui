@@ -1,7 +1,7 @@
 <template>
   <div :class="['u-input']">
-    <input v-bind="$attrs" @input="handleInput" type="text" />
-    <textarea v-bind="$attrs"  ></textarea>
+    <input v-if="type !== 'textarea'" class="input" v-bind="$attrs" @input="handleInput" type="text" />
+    <textarea v-else class="input" v-bind="$attrs"  ></textarea>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default defineComponent({
   },
   name: 'z-input',
   setup(props, { emit, attrs }) {
-    console.log(attrs)
+    
     
     const handleInput = (event: InputEvent | CompositionEvent | Event,) => {
       let value = (event.target as HTMLInputElement).value
@@ -31,3 +31,28 @@ export default defineComponent({
   },
 })
 </script>
+<style lang="scss" scoped>
+$component-height: 32px;
+$input-color: #333333;
+$border-color: #e6e6eb;
+.u-input {
+  display: inline-block;
+  width: 300px;
+  height: $component-height;
+  &.textarea {
+    height: 200px;
+  }
+  .input {
+    width:100%;
+    height: 100%;
+    font-size: 14px;
+    color:  $input-color;
+    padding: 6px 10px;
+    border: 1px solid $border-color;
+    border-radius: 2px;
+  }
+
+}
+ 
+  
+</style>
