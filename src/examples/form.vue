@@ -26,42 +26,54 @@
     <z-link type="danger">禁用颜色</z-link>
     <z-link type="info">消息颜色</z-link>
   </div>
+
+  <d-component-item name="z-crumb">
+    <z-crumb>
+      <z-crumb-item to="/">home</z-crumb-item>
+      <z-crumb-item to="/">home</z-crumb-item>
+      <z-crumb-item>home</z-crumb-item>
+    </z-crumb>
+    <z-crumb separator=">">
+      <z-crumb-item to="/">home</z-crumb-item>
+      <z-crumb-item to="/" disabled>home</z-crumb-item>
+      <z-crumb-item>home</z-crumb-item>
+    </z-crumb>
+  </d-component-item>
+  <d-component-item>
+    <z-badge status="success" />
+    <z-badge status="error" />
+    <z-badge status="default" />
+    <z-badge status="warning" />
+    <br />
+    <z-badge status="success" text="success" />
+    <br />
+    <z-badge status="error" text="error" />
+    <br />
+    <z-badge status="default" text="default" />
+    <br />
+    <z-badge status="warning" text="warning" />
+  </d-component-item>
+
+  <d-component-item>
+    <z-tabs>
+      <z-tab-pane label="Tab 1">这是选项卡1</z-tab-pane>
+      <z-tab-pane label="Tab 2">这是选项卡2</z-tab-pane>
+    </z-tabs>
+  </d-component-item>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-// import HelloWorld from './components/HelloWorld.vue'
-import ZButton from '../components/z-button.vue'
-import ZInput from '../components/input/index.vue'
-import ZSwitch from '../components/switch/index.vue'
-import ZRow from '../components/row/index.vue'
-import ZCol from '../components/col/index.vue'
-import ZRadio from '../components/radio/radio.vue'
-import ZRadioGroup from '../components/radio/radio-group.vue'
-import ZCheckBox from '../components/z-checkbox/z-checkbox.vue'
-
-import Toast from '../components/Toast/index'
-import ZIcon from '../components/icon/z-icon.vue'
-import ZLink from '../components/link/z-link.vue'
-
-import ZTree from '../components/tree/z-tree.vue'
+import { defineComponent, ref, getCurrentInstance } from 'vue'
+import DComponentItem from './DComponentItem.vue'
+import Toast from '../components/index'
 export default defineComponent({
   name: 'App',
   components: {
-    ZButton,
-    ZInput,
-    ZSwitch,
-    ZRow,
-    ZCol,
-    ZRadio,
-    ZRadioGroup,
-    ZCheckBox,
-    ZTree,
-    ZIcon,
-    ZLink
+    DComponentItem
   },
   setup(props) {
-    console.log()
+    const instance = getCurrentInstance()
+    const { $toast } = instance.appContext.config.globalProperties
     let treeData = ref({
       label: 'My Tree',
       children: [
@@ -128,9 +140,8 @@ export default defineComponent({
     const checkClick = () => {
       checkValue = !checkValue
     }
-
     const toastClick = () => {
-      Toast({ text: 'asdfasd', type: 'error' })
+      $toast({ text: 'asdfasd', type: 'error' })
     }
     return { val, checkValue, toastClick, treeData, switchVal }
   },
