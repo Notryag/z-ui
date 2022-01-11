@@ -1,9 +1,12 @@
 FROM node:lts-alpine AS builder
 WORKDIR /app
 
+ADD package.json /app
+RUN npm install --production --registry=https://registry.npm.taobao.org
+
 COPY . /app
 
-RUN npm i --registry=https://registry.npm.taobao.org && npm run build
+RUN npm run build
 
 FROM nginx:stable-alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
