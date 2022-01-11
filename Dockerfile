@@ -3,7 +3,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN npm i && npm run build
+RUN npm i --registry=https://registry.npm.taobao.org && npm run build
 
 FROM nginx:stable-alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
