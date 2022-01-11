@@ -1,4 +1,4 @@
-FROM node AS builder
+FROM node:lts-alpine AS builder
 WORKDIR /app
 
 COPY . /app
