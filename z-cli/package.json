@@ -1,0 +1,22 @@
+{
+  "name": "z-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "esbuild --bundle ./src/index.js --format=cjs --platform=node --outdir=./lib --watch",
+    "build": "esbuild --bundle ./src/index.js --format=cjs --platform=node --outdir=./lib",
+    "cli": "node ./lib/index.js create"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "commander": "^8.3.0",
+    "esbuild": "^0.14.11",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.2.0",
+    "kolorist": "^1.5.1"
+  }
+}
