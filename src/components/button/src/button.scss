@@ -1,0 +1,26 @@
+$border-color: #e6e6eb;
+$primary-color: #409eff;
+.z-button {
+  display: inline-block;
+  position: relative;
+  padding: 10px 20px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  background-color: #ffffff;
+  letter-spacing: 0;
+  line-height: 1;
+
+  &:hover {
+    border: 1px solid $primary-color;
+    color: $primary-color;
+  }
+}
+.is-round {
+  border-radius: 20px;
+}
+.is-circle {
+  border-radius: 50%;
+  padding: 10px;
+}

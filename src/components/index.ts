@@ -1,6 +1,6 @@
 import { version } from '../../package.json'
 
-import ZButton from './z-button.vue'
+import {Button as ZButton} from './button/index'
 import ZInput from './input/index.vue'
 import ZSwitch from './switch/index.vue'
 import ZRow from './row/index.vue'
@@ -44,9 +44,12 @@ const components = {
 const apps: App[] = []
 const install = (app: App, opts:any) => {
   if (apps.includes(app)) return
+  console.log(components);
+  
   Object.keys(components).forEach(key => app.component(key, components[key]))
   app.config.globalProperties['$toast'] = ZToast
 }
+
 
 
 export default {

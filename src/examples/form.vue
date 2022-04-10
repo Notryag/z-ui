@@ -3,7 +3,7 @@
     <ZCheckBox v-model="val">备选项1</ZCheckBox>
   </div>
   <div>
-    <button @click="toastClick">button</button>
+    <ZButton @click="toastClick">button</ZButton>
   </div>
   <div>
     <z-tree :data="treeData"></z-tree>

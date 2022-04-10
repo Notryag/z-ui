@@ -8,15 +8,16 @@
   </span>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import {defineComponent} from 'vue';
+export default defineComponent({
   name: 'ZBadge',
   props: {
     text: [String, Number],
     status: {
       type: String,
       default: '',
-      validator: (value) =>
+      validator: (value:string) =>
         [
           '',
           'success',
@@ -30,7 +31,7 @@ export default {
     count: [String, Number],
     shine: Boolean,
   },
-}
+})
 </script>
 <style lang="scss" scoped>
 .z-badge{
