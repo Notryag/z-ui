@@ -1,15 +1,12 @@
+
+<script lang="tsx">
 import { computed, defineComponent } from 'vue'
+import { buttonProps } from './button.ts'
 import './button.scss'
 
 export default defineComponent({
   name: 'ZButton',
-  props: {
-    icon: String,
-    autofocus: Boolean,
-    round: Boolean,
-    circle: Boolean,
-    disabled: Boolean,
-  },
+  props: buttonProps,
   setup(props, { emit, slots }) {
     const handleClick = (e: MouseEvent) => {
       emit('click', e)
@@ -34,3 +31,5 @@ export default defineComponent({
     }
   },
 })
+
+</script>
