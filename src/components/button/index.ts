@@ -1,5 +1,5 @@
 import type { App } from 'vue'
-import Button from './src/button.tsx'
+import Button from './src/button.vue'
 
 Button.install = function(app: App): void {
   app.component(Button.name, Button)

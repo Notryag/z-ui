@@ -60,92 +60,100 @@
       <z-tab-pane label="Tab 2">这是选项卡2</z-tab-pane>
     </z-tabs>
   </d-component-item>
+
+  <d-component-item name="radio">
+    <z-radio-group v-model="radio1" class="ml-4">
+      <z-radio label="1" >Option 1</z-radio>
+      <z-radio label="2" >Option 2</z-radio>
+    </z-radio-group>
+    <span>{{radio1}}</span>
+  </d-component-item>
 </template>
 
 <script lang="ts">
+export default {
+  name: 'App',
+};
+</script>
+
+<script lang="ts" setup>
 import { defineComponent, ref, getCurrentInstance } from 'vue'
 import DComponentItem from './DComponentItem.vue'
 import Toast from '../components/index'
-export default defineComponent({
-  name: 'App',
-  components: {
-    DComponentItem
-  },
-  setup(props) {
-    const instance = getCurrentInstance()
-    const { $toast } = instance.appContext.config.globalProperties
-    let treeData = ref({
-      label: 'My Tree',
+
+const instance = getCurrentInstance()
+const { $toast } = instance.appContext.config.globalProperties
+let treeData = ref({
+  label: 'My Tree',
+  children: [
+    {
+      label: 'Level one 1',
       children: [
         {
-          label: 'Level one 1',
+          label: 'Level two 1-1',
           children: [
             {
-              label: 'Level two 1-1',
-              children: [
-                {
-                  label: 'Level three 1-1-1',
-                },
-              ],
+              label: 'Level three 1-1-1',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'Level one 2',
+      children: [
+        {
+          label: 'Level two 2-1',
+          children: [
+            {
+              label: 'Level three 2-1-1',
             },
           ],
         },
         {
-          label: 'Level one 2',
+          label: 'Level two 2-2',
           children: [
             {
-              label: 'Level two 2-1',
-              children: [
-                {
-                  label: 'Level three 2-1-1',
-                },
-              ],
+              label: 'Level three 2-2-1',
             },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'Level one 3',
+      children: [
+        {
+          label: 'Level two 3-1',
+          children: [
             {
-              label: 'Level two 2-2',
-              children: [
-                {
-                  label: 'Level three 2-2-1',
-                },
-              ],
+              label: 'Level three 3-1-1',
             },
           ],
         },
         {
-          label: 'Level one 3',
+          label: 'Level two 3-2',
           children: [
             {
-              label: 'Level two 3-1',
-              children: [
-                {
-                  label: 'Level three 3-1-1',
-                },
-              ],
-            },
-            {
-              label: 'Level two 3-2',
-              children: [
-                {
-                  label: 'Level three 3-2-1',
-                },
-              ],
+              label: 'Level three 3-2-1',
             },
           ],
         },
-      ]
-    })
-    let val = ref('123')
-    let checkValue = ref(false)
-    let switchVal = ref(false)
-    const checkClick = () => {
-      checkValue = !checkValue
-    }
-    const toastClick = () => {
-      $toast({ text: 'asdfasd', type: 'error' })
-    }
-    return { val, checkValue, toastClick, treeData, switchVal }
-  },
+      ],
+    },
+  ]
 })
+let val = ref('123')
+let checkValue = ref(false)
+let switchVal = ref(false)
+const checkClick = () => {
+  checkValue = !checkValue
+}
+const toastClick = () => {
+  $toast({ text: 'asdfasd', type: 'error' })
+}
+
+const radio1 = ref('1')
 </script>
 
 <style>

@@ -1,54 +1,52 @@
 <template>
   <label class="z-radio">
-    <input v-model="model" :value="label" @change="handleChange" ref="radioRef" type="radio" /> <slot>{{ label }}</slot>
+    <input v-model="model" :value="label" @change="handleChange" ref="radioRef" type="radio" />
+    <slot>{{ label }}</slot>
   </label>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, nextTick, ref } from 'vue'
 const UPDATE_MODEL_EVENT = 'update:modelValue'
-export default defineComponent({
-  name: 'z-radio',
-  props: {
-    modelValue: {
-      type: [String, Number, Boolean],
-      default: '',
-    },
-    label: {
-      type: [String, Number, Boolean],
-      default: '',
-    },
-  },
-  setup(props, { emit }) {
-    const radioGroup: any = inject('ZRadioGroup')
-    const isGroup = computed(() => radioGroup?.name === 'ZRadioGroup')
 
-    const radioRef = ref()
-    const model = computed({
-      get() {
-        return isGroup.value ? radioGroup.modelValue : props.modelValue
-      },
-      set(val) {
-        if (isGroup.value) {
-          radioGroup.changeEvent(val)
-        } else {
-          emit(UPDATE_MODEL_EVENT, val)
-        }
-        radioRef.value.checked = props.modelValue === props.label
-      },
-    })
-    const handleChange = (): void => {
-      nextTick(() => {
-        emit('change', model.value)
-      })
+export default {
+  name: 'z-radio',
+};
+</script>
+
+<script lang="ts" setup>
+import { computed, defineComponent, inject, nextTick, ref } from 'vue'
+import { radioEmits, radioProps } from './radio';
+
+const props = defineProps(radioProps);
+const emit = defineEmits(radioEmits)
+
+const radioGroup: any = inject('ZRadioGroup')
+const isGroup = computed(() => radioGroup?.name === 'ZRadioGroup')
+
+const radioRef = ref<HTMLInputElement>()
+const model = computed({
+  get() {
+    return isGroup.value ? radioGroup.modelValue : props.modelValue
+  },
+  set(val) {
+    if (isGroup.value) {
+      radioGroup.changeEvent(val)
+    } else {
+      emit('UPDATE_MODEL_EVENT', val)
     }
-    return { model, radioRef, handleChange, isGroup }
+    radioRef.value!.checked = props.modelValue === props.label
   },
 })
+const handleChange = (): void => {
+  nextTick(() => {
+    emit('change', model.value)
+  })
+}
 </script>
 
 <style lang="scss">
 $disabled-color: #c4ccd8;
+
 .z-radio {
   display: inline-block;
   user-select: none;

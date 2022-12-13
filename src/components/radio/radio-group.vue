@@ -5,35 +5,41 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick, provide, reactive, toRefs } from 'vue'
-const UPDATE_MODEL_EVENT = 'update:modelValue'
-export default defineComponent({
+
+export default {
   name: 'ZRadioGroup',
-  props: {
-    modelValue: {
-      type: [String, Number, Boolean],
-      default: '',
-    },
-  },
-  setup(props, ctx) {
-    // methods
-    const changeEvent = (value: any) => {
-      ctx.emit(UPDATE_MODEL_EVENT, value)
-      nextTick(() => {
-        ctx.emit('change', value)
-      })
-    }
-    provide(
-      'ZRadioGroup',
-      reactive({
-        name: 'ZRadioGroup',
-        ...toRefs(props),
-        changeEvent: changeEvent,
-      })
-    )
-    return { changeEvent }
-  },
-})
+};
 </script>
 
-<style lang="scss"></style>
+<script lang="ts" setup>
+import { nextTick, provide, reactive, toRefs, useAttrs, useSlots } from 'vue'
+import { CHANG_EVENT, UPDATE_MODEL_EVENT } from '../../constant/event';
+
+const props = defineProps({
+  modelValue: {
+    type: [String, Number, Boolean],
+    default: '',
+  },
+})
+const emit = defineEmits([UPDATE_MODEL_EVENT, CHANG_EVENT])
+
+const changeEvent = (value: any) => {
+  emit(UPDATE_MODEL_EVENT, value)
+  nextTick(() => {
+    emit(CHANG_EVENT, value)
+  })
+}
+
+provide(
+  'ZRadioGroup',
+  reactive({
+    name: 'ZRadioGroup',
+    ...toRefs(props),
+    changeEvent: changeEvent,
+  })
+)
+</script>
+
+<style lang="scss">
+
+</style>

@@ -3,7 +3,7 @@ import { ExtractPropTypes } from "vue"
 export const buttonTypes = ['default','primary','success','warning', 'infor', 'danger', 'text', ''] as const
 
 
-const buttonProps = {
+export const buttonProps = {
     icon: {
         type: String,
     },

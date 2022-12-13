@@ -8,5 +8,4 @@ export default defineConfig({
     vue(),
     vueJsx()
   ],
-  resolve: { alias: { '@': path.resolve(__dirname, 'src') },
 })
