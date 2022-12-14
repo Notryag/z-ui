@@ -1,33 +1,47 @@
 <template>
-  <div>
+  <d-component-item name="input">
+    <z-input v-model="inputVal">备选项1</z-input>
+    <div style="margin-top:20px">bind val: {{inputVal}}</div>
+  </d-component-item>
+
+  <d-component-item name="checkbox">
     <ZCheckBox v-model="val">备选项1</ZCheckBox>
-  </div>
-  <div>
+  </d-component-item>
+
+  <d-component-item name="button">
     <ZButton @click="toastClick">button</ZButton>
-  </div>
-  <div>
-    <z-tree :data="treeData"></z-tree>
-  </div>
-  <div>
+  </d-component-item>
+
+  <d-component-item name="radio">
+    <z-radio-group v-model="radio1" class="ml-4">
+      <z-radio label="1">Option 1</z-radio>
+      <z-radio label="2">Option 2</z-radio>
+    </z-radio-group>
+    <span>{{ radio1 }}</span>
+  </d-component-item>
+
+  <d-component-item name="crumb">
     <ZSwitch v-model="switchVal"></ZSwitch>
-  </div>
-  <div>
+  </d-component-item>
+
+  <d-component-item name="icon">
     <z-icon size="s" name="edit" />
     <z-icon name="edit" />
     <z-icon size="l" name="edit" />
     <z-icon size="40px" name="edit" />
     <z-icon size="40px" color="#F30000" name="edit" />
-  </div>
-  <div>
+  </d-component-item>
+
+  <d-component-item name="link">
     <z-link>普通颜色</z-link>
     <z-link type="primary">主要颜色</z-link>
     <z-link type="success">成功颜色</z-link>
     <z-link type="warning">警告颜色</z-link>
     <z-link type="danger">禁用颜色</z-link>
     <z-link type="info">消息颜色</z-link>
-  </div>
+  </d-component-item>
 
-  <d-component-item name="z-crumb">
+  <d-component-item name="crumb">
     <z-crumb>
       <z-crumb-item to="/">home</z-crumb-item>
       <z-crumb-item to="/">home</z-crumb-item>
@@ -39,7 +53,8 @@
       <z-crumb-item>home</z-crumb-item>
     </z-crumb>
   </d-component-item>
-  <d-component-item>
+
+  <d-component-item name="badge">
     <z-badge status="success" />
     <z-badge status="error" />
     <z-badge status="default" />
@@ -54,19 +69,15 @@
     <z-badge status="warning" text="warning" />
   </d-component-item>
 
-  <d-component-item>
+  <d-component-item name="tab">
     <z-tabs>
       <z-tab-pane label="Tab 1">这是选项卡1</z-tab-pane>
       <z-tab-pane label="Tab 2">这是选项卡2</z-tab-pane>
     </z-tabs>
   </d-component-item>
 
-  <d-component-item name="radio">
-    <z-radio-group v-model="radio1" class="ml-4">
-      <z-radio label="1" >Option 1</z-radio>
-      <z-radio label="2" >Option 2</z-radio>
-    </z-radio-group>
-    <span>{{radio1}}</span>
+  <d-component-item name="tree">
+    <z-tree :data="treeData"></z-tree>
   </d-component-item>
 </template>
 
@@ -143,6 +154,9 @@ let treeData = ref({
     },
   ]
 })
+// input bind ref
+const inputVal = ref<string>('')
+
 let val = ref('123')
 let checkValue = ref(false)
 let switchVal = ref(true)
