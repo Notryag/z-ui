@@ -1,44 +1,38 @@
 <template>
-  <label ref="input" :class="['z-switch', { 'z-checked': currentValue }]" @click="toggle">
+  <label ref="input" :class="['z-switch', { 'z-checked': currentValue }]">
+    <input ref="inputRef" v-model="currentValue" :disabled="disabled" type="checkbox" @change="handleChange" />
     <span class="button"></span>
   </label>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-
-export default defineComponent({
+export default {
   name: 'z-switch',
-  props: {
-    modelValue: {
-      type: [Boolean],
-      default: false,
-    },
-    value: {
-      type: Boolean,
-      defalut: false,
-    },
-    disable: {
-      type: Boolean,
-      defalut: false,
-    },
+};
+</script>
+
+<script lang="ts" setup>
+import { computed, nextTick, ref } from 'vue'
+import { CHANG_EVENT, INPUT_EVENT, UPDATE_MODEL_EVENT } from '../../constant/event';
+import { switchProps } from './switch';
+
+const props = defineProps(switchProps)
+const emit = defineEmits([UPDATE_MODEL_EVENT, CHANG_EVENT, INPUT_EVENT])
+
+const currentValue = computed({
+  get() {
+    return props.modelValue
   },
-  emits: ['update:modelValue', 'change', 'input'],
-  setup(props, { emit }) {
-    const currentValue = ref(props.modelValue)
-    const toggle = () => {
-      if (props.disable) return
-      currentValue.value = !currentValue.value
-
-      emit('update:modelValue', currentValue.value)
-      emit('change', currentValue.value)
-      emit('input', currentValue.value)
-
-    }
-
-    return { toggle, currentValue }
-  },
+  set(value) {
+    emit(UPDATE_MODEL_EVENT, value)
+    emit(INPUT_EVENT, value)
+  }
 })
+
+const handleChange = async () => {
+  await nextTick()
+  emit(CHANG_EVENT, currentValue.value)
+}
 </script>
 
 <style lang="scss">
@@ -46,6 +40,7 @@ $height: 22px;
 $button-size: 18px;
 $disabled-color: #c4ccd8;
 $primary-color: #409eff;
+
 .z-switch {
   position: relative;
   display: inline-block;
@@ -58,6 +53,12 @@ $primary-color: #409eff;
   vertical-align: middle;
   user-select: none;
   cursor: pointer;
+  input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
   &.z-checked {
     background: $primary-color;
 
@@ -66,6 +67,7 @@ $primary-color: #409eff;
       left: 24px;
     }
   }
+
   .button {
     position: absolute;
     left: 2px;

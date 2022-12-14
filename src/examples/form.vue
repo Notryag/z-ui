@@ -145,7 +145,7 @@ let treeData = ref({
 })
 let val = ref('123')
 let checkValue = ref(false)
-let switchVal = ref(false)
+let switchVal = ref(true)
 const checkClick = () => {
   checkValue = !checkValue
 }
