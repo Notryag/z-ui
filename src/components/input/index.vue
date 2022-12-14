@@ -12,7 +12,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { type } from 'os';
 import { defineComponent, useAttrs } from 'vue'
 import { INPUT_EVENT, UPDATE_MODEL_EVENT } from '../../constant/event'
 import { inputProps } from './input';
