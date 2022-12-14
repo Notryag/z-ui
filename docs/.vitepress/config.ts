@@ -4,26 +4,12 @@ const sidebar = {
   '/': [
     { text: '快速开始', link: '/' },
     {
-      text: '通用'
-    },
-    {
-      text: '导航',
-    },
-    {
-      text: '反馈',
-    },
-    {
-      text: '数据录入',
-    },
-    {
-      text: '数据展示',
+      text: '通用',
       children: [
+        { text: 'Button', link: '/components/button' },
         { text: 'Tree 树', link: '/components/button/' },
       ]
-    },
-    {
-      text: '布局',
-    },
+    }
   ]
 }
 
