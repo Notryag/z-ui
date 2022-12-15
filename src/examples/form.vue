@@ -1,6 +1,8 @@
 <template>
   <d-component-item name="input">
     <z-input v-model="inputVal">备选项1</z-input>
+    <z-input disabled v-model="inputVal">备选项1</z-input>
+
     <div style="margin-top:20px">bind val: {{inputVal}}</div>
   </d-component-item>
 
