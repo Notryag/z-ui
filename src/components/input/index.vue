@@ -9,7 +9,7 @@
 
 <script lang="ts">
 export default {
-  name: 'z-input',
+  name: 'ZInput',
 };
 </script>
 

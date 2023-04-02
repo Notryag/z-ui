@@ -8,7 +8,7 @@
 import { computed, inject } from 'vue'
 import emtter from '../../utils/emiter.ts'
 export default {
-  name: 'TabPane',
+  name: 'ZTabPane',
   props: {
     label: String,
     disabled: Boolean,

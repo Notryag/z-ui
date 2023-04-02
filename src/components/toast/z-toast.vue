@@ -12,7 +12,7 @@
 <script>
 import { ref, onMounted } from 'vue'
 export default {
-  name: 'XtxMessage',
+  name: 'ZToast',
   props: {
     text: {
       type: String,

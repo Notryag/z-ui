@@ -17,8 +17,12 @@ export default {
 
 <script lang="tsx" setup>
 import { computed, ref, useSlots } from 'vue'
-import { buttonProps, buttonEmits } from './button.ts'
+import { buttonProps, buttonEmits } from './button'
 import ZIcon from '../../icon/z-icon.vue'
+
+defineOptions({
+  name: 'ZButton',
+})
 
 const props = defineProps(buttonProps)
 const emit = defineEmits(buttonEmits)

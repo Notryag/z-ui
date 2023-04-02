@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "esbuild --bundle ./src/index.js --format=cjs --platform=node --outdir=./lib --watch",
     "build": "esbuild --bundle ./src/index.js --format=cjs --platform=node --outdir=./lib",
-    "cli": "node ./lib/index.js create"
+    "cli": "node ./lib/index.js create",
+    "dev:v": "esbuild --bundle ./src/bin.ts --format=cjs --platform=node --outfile=./lib/bin.js --external:esbuild --minify-whitespace --watch"
   },
   "keywords": [],
   "author": "",

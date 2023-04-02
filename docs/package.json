@@ -1,0 +1,25 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "chalk": "^5.2.0",
+    "unocss": "^0.50.6",
+    "vite": "^4.2.1",
+    "vitepress": "1.0.0-alpha.64",
+    "vitepress-theme-demoblock": "^2.0.2"
+  },
+  "dependencies": {
+    "vue": "^3.2.47"
+  }
+}

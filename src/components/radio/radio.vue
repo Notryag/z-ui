@@ -9,7 +9,7 @@
 const UPDATE_MODEL_EVENT = 'update:modelValue'
 
 export default {
-  name: 'z-radio',
+  name: 'ZRadio',
 };
 </script>
 
