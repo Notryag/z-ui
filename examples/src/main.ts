@@ -1,7 +1,9 @@
 import { createApp } from 'vue'
+import zui from '@zui-plus/components'
 import App from './App.vue'
 import './assets/main.css'
-import zui from '@zui-plus/components'
+import 'uno.css'
+
 console.log(zui,'zui');
 
 const app = createApp(App)

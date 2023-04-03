@@ -14,6 +14,8 @@
     "cli": "node ./z-cli/lib/index.js create"
   },
   "dependencies": {
+    "@vue/shared": "^3.2.47",
+    "@vueuse/core": "^9.13.0",
     "material-design-icons": "^3.0.1",
     "vue": "^3.2.47"
   },

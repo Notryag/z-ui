@@ -40,6 +40,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@use "sass:math";
 .z-col {
   display: inline-block;
   box-sizing: border-box;
@@ -47,13 +48,13 @@ export default defineComponent({
 
 @for $i from 1 through 24 {
   .z-col-#{$i} {
-    width: 100%/24 * $i;
+    width: math.div(100%, 24) * $i;
   }
 }
 
 @for $k from 1 through 24 {
   .z-col-offset-#{$k} {
-    margin-left: 100%/24*$k; 
+    margin-left: math.div(100%, 24) *$k; 
   }
 }
 </style>

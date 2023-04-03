@@ -6,7 +6,7 @@
             </span>
             <span class="desc">{{ desc }}</span>
         </p>
-        <div class="c-content">
+        <div class="c-content" v-bind="$attrs">
             <slot></slot>
         </div>
     </div>

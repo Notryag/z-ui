@@ -1,38 +1,39 @@
 <template>
-
   <d-component-item name="button">
-    <z-button type="primary">主要按钮</z-button>
-    <z-button type="success">成功按钮</z-button>
-    <z-button type="info">信息按钮</z-button>
-    <z-button type="warning">警告按钮</z-button>
-    <z-button type="danger">危险按钮</z-button>
-    <z-button type="text">文字按钮</z-button>
-    <br>
-    
-    <z-button plain>朴素按钮</z-button>
-    <z-button type="primary" plain>主要按钮</z-button>
-    <z-button type="success" plain>成功按钮</z-button>
-    <z-button type="info" plain>信息按钮</z-button>
-    <z-button type="warning" plain>警告按钮</z-button>
-    <z-button type="danger" plain>危险按钮</z-button>
-    <br>
+    <div class="">
+      <div class="gap-2 flex w-full">
+        <z-button type="primary">主要按钮</z-button>
+        <z-button type="success">成功按钮</z-button>
+        <z-button type="info">信息按钮</z-button>
+        <z-button type="warning">警告按钮</z-button>
+        <z-button type="danger">危险按钮</z-button>
+        <z-button type="text">文字按钮</z-button>
+      </div>
+      <div class="gap-2 flex w-full my-2">
+        <z-button plain>朴素按钮</z-button>
+        <z-button type="primary" plain>主要按钮</z-button>
+        <z-button type="success" plain>成功按钮</z-button>
+        <z-button type="info" plain>信息按钮</z-button>
+        <z-button type="warning" plain>警告按钮</z-button>
+        <z-button type="danger" plain>危险按钮</z-button>
+      </div>
 
-    <z-button round>圆角按钮</z-button>
-    <z-button type="primary" round>主要按钮</z-button>
-    <z-button type="success" round>成功按钮</z-button>
-    <z-button type="info" round>信息按钮</z-button>
-    <z-button type="warning" round>警告按钮</z-button>
-    <z-button type="danger" round>危险按钮</z-button>
-
-
-    <z-button type="primary" icon="edit">主要按钮</z-button>
-
+      <div class="gap-2 flex w-full my-2">
+        <z-button round>圆角按钮</z-button>
+        <z-button type="primary" round>主要按钮</z-button>
+        <z-button type="success" round>成功按钮</z-button>
+        <z-button type="info" round>信息按钮</z-button>
+        <z-button type="warning" round>警告按钮</z-button>
+        <z-button type="danger" round>危险按钮</z-button>
+      </div>
+    </div>
   </d-component-item>
   <d-component-item name="input">
-    <z-input v-model="inputVal">备选项1</z-input>
-    <z-input disabled v-model="inputVal">备选项1</z-input>
-
-    <div style="margin-top:20px">bind val: {{ inputVal }}</div>
+    <div class="gap-2">
+      <z-input v-model="inputVal" >备选项1</z-input>
+      <z-input disabled v-model="inputVal">备选项1</z-input>
+      <div style="margin-top: 20px">bind val: {{ inputVal }}</div>
+    </div>
   </d-component-item>
 
   <d-component-item name="checkbox">
@@ -40,7 +41,7 @@
   </d-component-item>
 
   <d-component-item name="button">
-    <ZButton @click="toastClick">button</ZButton>
+    <ZButton>button</ZButton>
   </d-component-item>
 
   <d-component-item name="radio">
@@ -115,16 +116,14 @@
 <script lang="ts">
 export default {
   name: 'App',
-};
+}
 </script>
 
 <script lang="ts" setup>
-import { defineComponent, ref, getCurrentInstance } from 'vue'
+import { ref, getCurrentInstance } from 'vue'
 import DComponentItem from './DComponentItem.vue'
-import Toast from '../components/index'
 
 const instance = getCurrentInstance()
-const { $toast } = instance.appContext.config.globalProperties
 let treeData = ref({
   label: 'My Tree',
   children: [
@@ -183,7 +182,7 @@ let treeData = ref({
         },
       ],
     },
-  ]
+  ],
 })
 // input bind ref
 const inputVal = ref<string>('')
@@ -192,10 +191,7 @@ let val = ref('123')
 let checkValue = ref(false)
 let switchVal = ref(true)
 const checkClick = () => {
-  checkValue = !checkValue
-}
-const toastClick = () => {
-  $toast({ text: 'asdfasd', type: 'error' })
+  checkValue.value = !checkValue
 }
 
 const radio1 = ref('1')
