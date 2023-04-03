@@ -1,4 +1,5 @@
 packages:
-  - src
+  - packages
   - docs
   - z-cli
+  - examples

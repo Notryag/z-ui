@@ -1,0 +1,22 @@
+{
+  "name": "@zui-plus/components",
+  "version": "0.0.1",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "coverage": "vitest run --coverage"
+  },
+  "files": [
+    "es",
+    "lib"
+  ],
+  "keywords": [
+    "z-ui",
+    "vue3组件库"
+  ],
+  "author": "Notryage",
+  "license": "MIT",
+  "description": "",
+  "typings": "lib/index.d.ts"
+}

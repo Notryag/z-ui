@@ -89,7 +89,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { z-button } from "kitty-ui";
+import { z-button } from "z-ui";
 </script>
 <style>
 .k-z-button {
@@ -144,7 +144,7 @@ import { z-button } from "kitty-ui";
   </div>
 </template>
 <script lang="ts" setup>
-import { z-button } from "kitty-ui";
+import { z-button } from "z-ui";
 </script>
 <style>
 .k-z-button {
@@ -179,7 +179,7 @@ import { z-button } from "kitty-ui";
   </div>
 </template>
 <script lang="ts" setup>
-import { z-button } from "kitty-ui";
+import { z-button } from "z-ui";
 </script>
 <style>
 .k-z-button {
