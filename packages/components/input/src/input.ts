@@ -14,6 +14,14 @@ export const inputProps = {
     type: Boolean,
     default: false,
   },
+  readonly: {
+    type: Boolean,
+    default: false,
+  },
+  clearable: {
+    type: Boolean,
+    default: false
+  }
 }
 
 

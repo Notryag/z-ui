@@ -29,9 +29,11 @@
     </div>
   </d-component-item>
   <d-component-item name="input">
-    <div class="gap-2">
+    <div class="gap-2 flex flex-col">
       <z-input v-model="inputVal" >备选项1</z-input>
       <z-input disabled v-model="inputVal">备选项1</z-input>
+      <z-input clearable v-model="inputVal">备选项1</z-input>
+
       <div style="margin-top: 20px">bind val: {{ inputVal }}</div>
     </div>
   </d-component-item>

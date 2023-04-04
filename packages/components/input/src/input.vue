@@ -1,13 +1,27 @@
 <template>
-  <div class="z-input" :class="containClass">
+  <div
+    class="z-input"
+    :class="containClass"
+    @mouseenter="hover = true"
+    @mouseleave="hover = false"
+  >
     <div v-if="type !== 'textarea'" class="z-input__wrapper">
       <input
         class="z-input__inner"
         v-model="model"
         v-bind="$attrs"
+        :disabled="props.disabled"
+        :readonly="props.readonly"
         @change="handleChange"
         @focus="handleFocus"
       />
+      <div
+        v-if="showClear"
+        @click="clear()"
+        class="z-input__clear"
+      >
+        x
+      </div>
     </div>
     <textarea v-else class="input"></textarea>
   </div>
@@ -31,6 +45,26 @@ const emit = defineEmits(inputEmits)
 const attrs = useAttrs()
 
 const focus = ref(false)
+const hover = ref(false)
+
+const model = computed({
+  get() {
+    return props.modelValue
+  },
+  set(val) {
+    emit(UPDATE_MODEL_EVENT, val)
+    emit(INPUT_EVENT, val)
+  },
+})
+
+const showClear = computed(
+  () =>
+    props.clearable &&
+    (focus.value || hover.value) &&
+    model.value &&
+    !props.disabled &&
+    !props.readonly
+)
 
 const containClass = computed(() => {
   return {
@@ -47,15 +81,9 @@ const handleFocus = (e: FocusEvent) => {
   emit('focus', e)
 }
 
-const model = computed({
-  get() {
-    return props.modelValue
-  },
-  set(val) {
-    emit(UPDATE_MODEL_EVENT, val)
-    emit(INPUT_EVENT, val)
-  },
-})
+const clear = () => {
+  model.value = ''
+}
 </script>
 <style lang="scss">
 $input-color: #333333;
@@ -99,6 +127,17 @@ $border-color: #e6e6eb;
     flex-grow: 1;
     padding: 1px 11px;
     box-sizing: border-box;
+    .z-input__clear {
+      cursor: pointer;
+      color: #c0c4cc;
+      font-size: 14px;
+      line-height: 14px;
+      margin-left: 8px;
+      transition: color 0.3s;
+      &:hover {
+        color: #909399;
+      }
+    }
   }
 
   .z-input__inner {
