@@ -20,7 +20,7 @@ export default {
     dispatch('props', props)
 
     const isShow = computed(() => {
-      return active.label === label
+      return active?.label === label
     })
 
     return {

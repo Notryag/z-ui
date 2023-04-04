@@ -30,12 +30,20 @@
   </d-component-item>
   <d-component-item name="input">
     <div class="gap-2 flex flex-col">
-      <z-input v-model="inputVal" >备选项1</z-input>
+      <z-input v-model="inputVal">备选项1</z-input>
       <z-input disabled v-model="inputVal">备选项1</z-input>
       <z-input clearable v-model="inputVal">备选项1</z-input>
 
       <div style="margin-top: 20px">bind val: {{ inputVal }}</div>
     </div>
+  </d-component-item>
+
+  <d-component-item name="radio">
+    <z-radio-group v-model="radio1" class="ml-4">
+      <z-radio label="1">Option 1</z-radio>
+      <z-radio label="2">Option 2</z-radio>
+    </z-radio-group>
+    <span class="my-2 mx-4 block"> radio bind value: {{ radio1 }}</span>
   </d-component-item>
 
   <d-component-item name="checkbox">
@@ -44,14 +52,6 @@
 
   <d-component-item name="button">
     <ZButton>button</ZButton>
-  </d-component-item>
-
-  <d-component-item name="radio">
-    <z-radio-group v-model="radio1" class="ml-4">
-      <z-radio label="1">Option 1</z-radio>
-      <z-radio label="2">Option 2</z-radio>
-    </z-radio-group>
-    <span>{{ radio1 }}</span>
   </d-component-item>
 
   <d-component-item name="crumb">

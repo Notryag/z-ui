@@ -13,13 +13,13 @@ export default {
 
 <script lang="ts" setup>
 import { nextTick, provide, reactive, toRefs, useAttrs, useSlots } from 'vue'
-import { CHANG_EVENT, UPDATE_MODEL_EVENT } from '../../constant/event';
+import { CHANG_EVENT, UPDATE_MODEL_EVENT } from '../../../constant/event';
 
 const props = defineProps({
   modelValue: {
     type: [String, Number, Boolean],
     default: '',
-  },
+  }
 })
 const emit = defineEmits([UPDATE_MODEL_EVENT, CHANG_EVENT])
 

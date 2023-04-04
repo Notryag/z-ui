@@ -50,7 +50,6 @@ const useButton = (props) => {
 
 
 const { classes, iconFont } = useButton(props)
-console.log('%c [ classes ]-40', 'font-size:13px; background:pink; color:#bf2c9f;', classes.value, props)
 </script>
 <style lang="scss">
 

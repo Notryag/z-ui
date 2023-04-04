@@ -1,6 +1,12 @@
 <template>
   <label class="z-radio">
-    <input v-model="model" :value="label" @change="handleChange" ref="radioRef" type="radio" />
+    <input
+      v-model="model"
+      :value="label"
+      @change="handleChange"
+      ref="radioRef"
+      type="radio"
+    />
     <slot>{{ label }}</slot>
   </label>
 </template>
@@ -10,20 +16,21 @@ const UPDATE_MODEL_EVENT = 'update:modelValue'
 
 export default {
   name: 'ZRadio',
-};
+}
 </script>
 
 <script lang="ts" setup>
-import { computed, defineComponent, inject, nextTick, ref } from 'vue'
-import { radioEmits, radioProps } from './radio';
+import { computed, inject, nextTick, ref } from 'vue'
+import { radioEmits, radioProps } from './radio'
 
-const props = defineProps(radioProps);
+const props = defineProps(radioProps)
 const emit = defineEmits(radioEmits)
 
 const radioGroup: any = inject('ZRadioGroup')
 const isGroup = computed(() => radioGroup?.name === 'ZRadioGroup')
 
 const radioRef = ref<HTMLInputElement>()
+
 const model = computed({
   get() {
     return isGroup.value ? radioGroup.modelValue : props.modelValue
@@ -37,6 +44,7 @@ const model = computed({
     radioRef.value!.checked = props.modelValue === props.label
   },
 })
+
 const handleChange = (): void => {
   nextTick(() => {
     emit('change', model.value)
