@@ -50,10 +50,6 @@
     <ZCheckBox v-model="val">备选项1</ZCheckBox>
   </d-component-item>
 
-  <d-component-item name="button">
-    <ZButton>button</ZButton>
-  </d-component-item>
-
   <d-component-item name="crumb">
     <ZSwitch v-model="switchVal"></ZSwitch>
   </d-component-item>
