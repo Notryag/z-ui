@@ -1,10 +1,13 @@
 <template>
-  <div class="u-checkbox" :disabled="disabled" :id="label">
-    <label>
-      <input type="checkbox" v-model="checkValue" :disabled="disabled"  @chagne="handleChange" />
+  <label class="z-checnbox">
+    <span class="z-checnbox--outer">
+      <span class="z-checnbox--inner" :class="{ 'is-checked': checkValue }"></span>
+      <input type="checkbox" class="z-checnbox-native" :value="label" v-model="checkValue">
+    </span>
+    <span class="checkbox__label">
       <slot>{{ label }}</slot>
-    </label>
-  </div>
+    </span>
+  </label>
 </template>
 
 <script lang="ts">
@@ -48,42 +51,71 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import "../../assets/css/vars.scss";
 
-.z-checkbox {
-  font-family: Arial, sans-serif;
-}
-
-.z-checkbox-label {
-  display: flex;
-  align-items: center;
+.z-checnbox--outer {
+  white-space: nowrap;
   cursor: pointer;
+  outline: none;
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+  vertical-align: middle;
+  margin-right: 2px;
 }
 
-.z-checkbox-input {
+.z-checnbox--inner {
+  display: inline-block;
+  position: relative;
+  border: 1px solid #dcdfe6;
+  border-radius: 2px;
+  box-sizing: border-box;
+  width: 14px;
+  height: 14px;
+  background-color: #fff;
+  z-index: 1;
+  transition: border-color .25s cubic-bezier(.71, -.46, .29, 1.46), background-color .25s cubic-bezier(.71, -.46, .29, 1.46);
+}
+
+.z-checnbox--inner:after {
+  box-sizing: content-box;
+  content: "";
+  border: 1px solid #fff;
+  border-left: 0;
+  border-top: 0;
+  height: 7px;
+  left: 4px;
+  position: absolute;
+  top: 1px;
+  transform: rotate(45deg) scaleY(0);
+  width: 3px;
+  transition: transform .15s ease-in .05s;
+  transform-origin: center;
+}
+
+.z-checnbox--inner.is-checked {
+  background-color: #409eff;
+  border-color: #409eff;
+}
+
+.z-checnbox--inner.is-checked:after {
+  transform: rotate(45deg) scaleY(1);
+}
+
+.z-checnbox-native {
+  opacity: 0;
   display: none;
 }
 
-.z-checkbox-box {
-  width: 18px;
-  height: 18px;
-  border: 1px solid #409EFF;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 8px;
-  position: relative;
+.z-checnbox__label {
+  margin-left: -10px;
+  display: inline-block;
+  line-height: 19px;
+  font-size: 14px;
 }
 
-.z-checkbox-icon {
-  color: #409EFF;
-  font-size: 14px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.z-checkbox-text {
-  font-size: 14px;
+.z-checnbox {
+  color: #606266;
+  // font-weight: 500;
+  margin-right: 10px;
+  cursor: pointer;
 }
 </style>

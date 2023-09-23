@@ -8,9 +8,7 @@ export const buttonSize = ['large', 'midium', 'small', 'mini'] as const
 export const buttonProps = {
     type: {
         type: String,
-        validator(value :string) {
-            return  buttonTypes.includes(value)
-        }
+        values: buttonTypes,
     },
     icon: {
         type: String,
@@ -20,9 +18,7 @@ export const buttonProps = {
     },
     size: {
         type: String,
-        validator(value: string) {
-            return buttonSize.includes(value)
-        } 
+        values: buttonSize,
     },
     round: {
         type: Boolean,
