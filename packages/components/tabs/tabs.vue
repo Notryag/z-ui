@@ -28,7 +28,7 @@
 import { provide, reactive, onBeforeUpdate, onMounted, nextTick } from 'vue'
 import emtter from '../../utils/emiter.ts'
 export default {
-  name: 'Tabs',
+  name: 'ZTabs',
   setup() {
     const { on } = emtter()
     const nav = reactive([])

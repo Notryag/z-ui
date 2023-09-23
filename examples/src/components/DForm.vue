@@ -47,7 +47,7 @@
   </d-component-item>
 
   <d-component-item name="checkbox">
-    <ZCheckBox v-model="val">备选项1</ZCheckBox>
+    <ZCheckbox v-model="val">备选项1</ZCheckBox>
   </d-component-item>
 
   <d-component-item name="crumb">

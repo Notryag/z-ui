@@ -17,7 +17,11 @@ export default defineComponent({
   props: {
     name: { type: [String, Number], required: true },
     color: { type: String },
-    size: { type: String }
+    size: { type: String },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
   },
   setup(props) {
     const style = computed<CSSProperties>(() => {

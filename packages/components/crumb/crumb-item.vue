@@ -26,6 +26,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
   },
   setup(props) {
     const link = ref<HTMLSpanElement>()
