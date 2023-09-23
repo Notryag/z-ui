@@ -1,5 +1,5 @@
 import { ExtractPropTypes } from "vue";
-import { CHANG_EVENT, UPDATE_MODEL_EVENT } from "../../../constant/event";
+import { CHANGE_EVENT, UPDATE_MODEL_EVENT } from "../../../constant/event";
 
 export const radioProps = {
     disabled: Boolean,
@@ -17,5 +17,5 @@ export const radioProps = {
 export type RadioProps = ExtractPropTypes<typeof radioProps>
 
 
-export const radioEmits = [UPDATE_MODEL_EVENT, CHANG_EVENT]
+export const radioEmits = [UPDATE_MODEL_EVENT, CHANGE_EVENT]
 

@@ -48,6 +48,11 @@
 
   <d-component-item name="checkbox">
     <ZCheckbox v-model="val">备选项1</ZCheckBox>
+
+    <z-checkbox-group v-model="checkGroupVal">
+      <z-checkbox label="1">备选项1</z-checkbox>
+      <z-checkbox label="2">备选项2</z-checkbox>
+    </z-checkbox-group>
   </d-component-item>
 
   <d-component-item name="crumb">
@@ -187,6 +192,9 @@ const inputVal = ref<string>('')
 
 let val = ref('123')
 let checkValue = ref(false)
+
+const checkGroupVal = ref(["1"])
+
 let switchVal = ref(true)
 const checkClick = () => {
   checkValue.value = !checkValue

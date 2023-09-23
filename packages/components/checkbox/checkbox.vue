@@ -1,18 +1,19 @@
 <template>
   <label class="z-checnbox">
     <span class="z-checnbox--outer">
-      <span class="z-checnbox--inner" :class="{ 'is-checked': checkValue }"></span>
-      <input type="checkbox" class="z-checnbox-native" :value="label" v-model="checkValue">
+      <span class="z-checnbox--inner" :class="{ 'is-checked': isChecked }"></span>
+      <input type="checkbox" class="z-checnbox-native" :value="label" v-model="model">
     </span>
     <span class="checkbox__label">
-      <slot>{{ label }}</slot>
+      <slot></slot>
+      <slot v-if="!$slots.default">{{ label }}</slot>
     </span>
   </label>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, computed } from 'vue'
-import { UPDATE_MODEL_EVENT, CHANG_EVENT } from '../../constant/event'
+import { defineComponent, computed, inject } from 'vue'
+import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../constant/event'
 
 export default defineComponent({
   name: 'ZCheckbox',
@@ -25,25 +26,44 @@ export default defineComponent({
       default: () => undefined,
     },
   },
-  emits: [UPDATE_MODEL_EVENT, CHANG_EVENT, 'check'],
+  emits: [UPDATE_MODEL_EVENT, CHANGE_EVENT, 'check'],
   setup: (props, { emit }) => {
+    const checkboxGroup = inject('checkboxGroupContextKey', undefined)
+    console.log(checkboxGroup, 'checkboxGroup')
+
+    const isGroup = computed(() => !!checkboxGroup)
 
     const handleChange = () => {
       if (props.disabled) return
-      emit(CHANG_EVENT, checkValue.value)
+      emit(CHANGE_EVENT, model.value)
     }
 
-    let checkValue = computed({
+    const model = computed({
       get() {
-        return props.modelValue
+        console.log(checkboxGroup?.modelValue?.value , 'checkboxGroup?.modelValue?.value ')
+        return isGroup.value ? checkboxGroup?.modelValue?.value : props.modelValue
       },
       set(val) {
-        console.log(val, 'check val');
-        emit(UPDATE_MODEL_EVENT, val)
+        
+        if(isGroup.value && Array.isArray(model.value)) {
+          checkboxGroup?.changeEvent?.(val)
+        } else {
+          emit(UPDATE_MODEL_EVENT, val)
+        }
       }
     })
 
-    return { checkValue, handleChange }
+    const isChecked = computed(() => {
+      console.log(checkboxGroup?.modelValue?.value, 'checkboxGroup?.modelValue?.value');
+      
+      if(isGroup.value && Array.isArray(model.value)) {
+        return checkboxGroup?.modelValue?.value?.includes(props.label)
+      } else if(typeof model.value === 'boolean') {
+        return model.value
+      }
+    })
+
+    return { model, handleChange, isChecked, isGroup }
   }
 })
 </script>
@@ -114,7 +134,6 @@ export default defineComponent({
 
 .z-checnbox {
   color: #606266;
-  // font-weight: 500;
   margin-right: 10px;
   cursor: pointer;
 }

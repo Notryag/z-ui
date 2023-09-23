@@ -13,11 +13,11 @@ export default {
 
 <script lang="ts" setup>
 import { computed, nextTick, ref } from 'vue'
-import { CHANG_EVENT, INPUT_EVENT, UPDATE_MODEL_EVENT } from '../../constant/event';
+import { CHANGE_EVENT, INPUT_EVENT, UPDATE_MODEL_EVENT } from '../../constant/event';
 import { switchProps } from './switch';
 
 const props = defineProps(switchProps)
-const emit = defineEmits([UPDATE_MODEL_EVENT, CHANG_EVENT, INPUT_EVENT])
+const emit = defineEmits([UPDATE_MODEL_EVENT, CHANGE_EVENT, INPUT_EVENT])
 
 const currentValue = computed({
   get() {
@@ -31,7 +31,7 @@ const currentValue = computed({
 
 const handleChange = async () => {
   await nextTick()
-  emit(CHANG_EVENT, currentValue.value)
+  emit(CHANGE_EVENT, currentValue.value)
 }
 </script>
 

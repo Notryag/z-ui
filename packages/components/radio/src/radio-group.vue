@@ -13,7 +13,7 @@ export default {
 
 <script lang="ts" setup>
 import { nextTick, provide, reactive, toRefs, useAttrs, useSlots } from 'vue'
-import { CHANG_EVENT, UPDATE_MODEL_EVENT } from '../../../constant/event';
+import { CHANGE_EVENT, UPDATE_MODEL_EVENT } from '../../../constant/event';
 
 const props = defineProps({
   modelValue: {
@@ -21,12 +21,12 @@ const props = defineProps({
     default: '',
   }
 })
-const emit = defineEmits([UPDATE_MODEL_EVENT, CHANG_EVENT])
+const emit = defineEmits([UPDATE_MODEL_EVENT, CHANGE_EVENT])
 
 const changeEvent = (value: any) => {
   emit(UPDATE_MODEL_EVENT, value)
   nextTick(() => {
-    emit(CHANG_EVENT, value)
+    emit(CHANGE_EVENT, value)
   })
 }
 
