@@ -1,3 +1,4 @@
+import { demoblockPlugin, demoblockVitePlugin } from 'vitepress-theme-demoblock'
 export default {
   title: 'ZUI',
   base: '/',
@@ -19,30 +20,50 @@ export default {
           ]
         },
         {
-          text: '开发',
+          text: '组件',
           items: [
             {
-              text: '目录结构',
-              link: '/develop/'
+              text: 'button',
+              link: '/components/button'
             },
             {
-              text: '组件开发',
-              link: '/develop/component'
-            },
-            {
-              text: '全局组件',
-              link: '/develop/global'
+              text: 'icon',
+              link: '/components/icon'
             },
 
             {
-              text: '打包发布',
-              link: '/develop/build'
-            }
+              text: 'checkbox',
+              link: '/components/checkbox'
+            },
+            {
+              text: 'switch',
+              link: '/components/switch'
+            },
+            {
+              text: 'Tabs',
+              link: '/components/tabs'
+            },
+            {
+              text: 'Crumb',
+              link: '/components/crumb'
+            },
           ]
         }
       ]
     },
 
     socialLinks: [{ icon: 'github', link: 'https://github.com/Notryag/z-ui' }]
+  },
+  // 以下是新增的
+  markdown: {
+    config: (md) => {
+      md.use(demoblockPlugin, {
+        customClass: 'demoblock-custom'
+      })
+    }
+  },
+  vite: {
+    plugins: [demoblockVitePlugin()],
+    resolve: { }
   }
 };

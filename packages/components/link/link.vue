@@ -1,5 +1,5 @@
 <template>
-    <a class="u-link"  :href="href" :disabled="disabled" @click="onClick">
+    <a class="z-link"  :href="href" :disabled="disabled" @click="onClick">
         <z-icon v-if="icon" :name="icon" />
         <span v-if="$slots.default">
             <slot></slot>
@@ -32,7 +32,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import "../../assets/css/vars.scss";
-.u-link {
+.z-link {
     display: inline-flex;
     flex-direction: row;
     align-items: center;
@@ -55,11 +55,11 @@ export default defineComponent({
         color: $disabled-color;
     }
 
-    & [class*="u-icon-"] + span {
+    & [class*="z-icon-"] + span {
         margin-left: 5px;
     }
 
-    .u-icon {
+    .z-icon {
         font-size: 14px;
     }
 }

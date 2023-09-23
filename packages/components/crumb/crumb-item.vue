@@ -1,5 +1,5 @@
 <template>
-  <li class="u-crumb-item">
+  <li class="z-crumb-item">
     <span ref="link" class="text" :disabled="disabled">
       <slot></slot>
     </span>
@@ -56,7 +56,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import "../../assets/css/vars.scss";
-.u-crumb-item {
+.z-crumb-item {
   display: inline;
 
   &:last-child {

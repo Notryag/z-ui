@@ -2,13 +2,13 @@
     <div :class="classes" :style="styles" @click="back">
         <slot>
             <div :class="innerClasses">
-                <u-icon name="arrow_upward" size="40px" color="#FFF" />
+                <z-icon name="arrow_upward" size="40px" color="#FFF" />
             </div>
         </slot>
     </div>
 </template>
 <script>
-const prefixCls = 'u-back-top'
+const prefixCls = 'z-back-top'
 export default {
     name: 'ZBacktop',
     props: {
@@ -74,13 +74,13 @@ $zindex-back-top: 10;
 $transition-time: 0.2s;
 $ease-in-out: ease-in-out;
 
-.u-back-top {
+.z-back-top {
     z-index: $zindex-back-top;
     position: fixed;
     cursor: pointer;
     display: none;
 
-    &.u-back-top-show {
+    &.z-back-top-show {
         display: block;
     }
 
